@@ -1,6 +1,6 @@
 console.log("Lotr-Commons requested");
 console.log("Dummy Test");
-console.log("Bhai");
+console.log("End of tests"");
 
 
 $(document).ready(function(){
