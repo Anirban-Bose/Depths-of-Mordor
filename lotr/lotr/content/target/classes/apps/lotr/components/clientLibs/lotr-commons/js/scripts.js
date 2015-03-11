@@ -1,5 +1,5 @@
 console.log("Lotr-Commons requested");
-console.log("Dummy");
+console.log("Dummy Test");
 
 
 $(document).ready(function(){

@@ -2,9 +2,9 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 <comment>LOTR Package</comment>
-<entry key="createdBy">838087</entry>
+<entry key="createdBy">840001</entry>
 <entry key="name">lotr-content</entry>
-<entry key="created">2015-03-10T17:54:12.270+0530</entry>
+<entry key="created">2015-03-11T14:17:57.217+0530</entry>
 <entry key="groupId">com.tcs.training</entry>
 <entry key="version">1.0-SNAPSHOT</entry>
 <entry key="requiresRoot">false</entry>
