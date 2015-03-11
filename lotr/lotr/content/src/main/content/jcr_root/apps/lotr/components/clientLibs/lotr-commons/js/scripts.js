@@ -1,6 +1,6 @@
 console.log("Lotr-Commons requested");
 console.log("Dummy Test");
-console.log("End of tests - bhaa");
+console.log("End of tests");
 
 
 
@@ -19,6 +19,10 @@ $(document).ready(function(){
 	if($("#searchForm").length)
 		{
 	$("#searchForm").submit(function(e){
+		e.preventDefault();
+		$('html, body').animate({
+			scrollTop: $("#txtSearch").offset().top-50
+		}, 500);
 		OFF=0;
 		$('#nxt').addClass("hide");
 		$('#prev').addClass("hide");
