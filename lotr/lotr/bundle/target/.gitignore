@@ -1,2 +1,7 @@
 /classes/
 /test-classes/
+/surefire-reports/
+/scr-plugin-generated/
+/maven-status/
+lotr*.jar
+*/*.class
