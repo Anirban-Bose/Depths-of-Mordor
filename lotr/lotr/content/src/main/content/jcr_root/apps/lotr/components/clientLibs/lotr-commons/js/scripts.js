@@ -1,5 +1,5 @@
 console.log("Lotr-Commons requested");
-
+console.log("Dummy change");
 
 
 $(document).ready(function(){
