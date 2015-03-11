@@ -1,4 +1,4 @@
-console.log("Lotr-Commons requested");
+console.log("Lotr-commons requested");
 
 $(document).ready(function(){
 	var dataJSONArray1;
