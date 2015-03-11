@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?><components xmlns:scr="http://www.osgi.org/xmlns/scr/v1.0.0">
+    <scr:component enabled="true" name="com.tcs.queryBuilderDemo.AltSearchServiceImpl">
+        <implementation class="com.tcs.queryBuilderDemo.AltSearchServiceImpl"/>
+        <service servicefactory="false">
+            <provide interface="com.tcs.queryBuilderDemo.AltSearchService"/>
+        </service>
+        <property name="service.pid" value="com.tcs.queryBuilderDemo.AltSearchServiceImpl"/>
+        <reference name="queryBuilder" interface="com.day.cq.search.QueryBuilder" cardinality="1..1" policy="static" bind="bindQueryBuilder" unbind="unbindQueryBuilder"/>
+    </scr:component>
+    <scr:component enabled="true" name="com.tcs.queryBuilderDemo.SearchServiceImpl">
+        <implementation class="com.tcs.queryBuilderDemo.SearchServiceImpl"/>
+        <service servicefactory="false">
+            <provide interface="com.tcs.queryBuilderDemo.SearchService"/>
+        </service>
+        <property name="service.pid" value="com.tcs.queryBuilderDemo.SearchServiceImpl"/>
+        <reference name="queryBuilder" interface="com.day.cq.search.QueryBuilder" cardinality="1..1" policy="static" bind="bindQueryBuilder" unbind="unbindQueryBuilder"/>
+    </scr:component>
+    <scr:component enabled="true" name="com.tcs.services.impl.WikiServiceImpl">
+        <implementation class="com.tcs.services.impl.WikiServiceImpl"/>
+        <service servicefactory="false">
+            <provide interface="com.tcs.services.WikiService"/>
+        </service>
+        <property name="service.pid" value="com.tcs.services.impl.WikiServiceImpl"/>
+    </scr:component>
+    <scr:component enabled="true" name="com.tcs.training.impl.HelloServiceImpl">
+        <implementation class="com.tcs.training.impl.HelloServiceImpl"/>
+        <service servicefactory="false">
+            <provide interface="com.tcs.training.HelloService"/>
+        </service>
+        <property name="service.pid" value="com.tcs.training.impl.HelloServiceImpl"/>
+        <reference name="repository" interface="org.apache.sling.jcr.api.SlingRepository" cardinality="1..1" policy="static" bind="bindRepository" unbind="unbindRepository"/>
+    </scr:component>
+    <scr:component enabled="true" immediate="true" name="com.tcs.training.impl.filters.LoggingFilter">
+        <implementation class="com.tcs.training.impl.filters.LoggingFilter"/>
+        <service servicefactory="false">
+            <provide interface="javax.servlet.Filter"/>
+        </service>
+        <property name="service.ranking" type="Integer" value="-700"/>
+        <property name="sling.filter.scope" value="REQUEST"/>
+        <property name="service.pid" value="com.tcs.training.impl.filters.LoggingFilter"/>
+    </scr:component>
+    <scr:component enabled="true" name="com.tcs.lotr.AltSearchResultsServlet">
+        <implementation class="com.tcs.lotr.AltSearchResultsServlet"/>
+        <service servicefactory="false">
+            <provide interface="javax.servlet.Servlet"/>
+        </service>
+        <property name="sling.servlet.paths" value="/bin/AltSearchResults"/>
+        <property name="sling.servlet.methods" value="POST"/>
+        <property name="service.pid" value="com.tcs.lotr.AltSearchResultsServlet"/>
+        <reference name="searchService" interface="com.tcs.queryBuilderDemo.AltSearchService" cardinality="1..1" policy="static" bind="bindSearchService" unbind="unbindSearchService"/>
+    </scr:component>
+    <scr:component enabled="true" name="com.tcs.lotr.SearchResultsServlet">
+        <implementation class="com.tcs.lotr.SearchResultsServlet"/>
+        <service servicefactory="false">
+            <provide interface="javax.servlet.Servlet"/>
+        </service>
+        <property name="sling.servlet.paths" value="/bin/SearchResults"/>
+        <property name="sling.servlet.methods" value="POST"/>
+        <property name="service.pid" value="com.tcs.lotr.SearchResultsServlet"/>
+        <reference name="searchService" interface="com.tcs.queryBuilderDemo.SearchService" cardinality="1..1" policy="static" bind="bindSearchService" unbind="unbindSearchService"/>
+    </scr:component>
+    <scr:component enabled="true" name="com.tcs.lotr.WikiContent">
+        <implementation class="com.tcs.lotr.WikiContent"/>
+        <service servicefactory="false">
+            <provide interface="javax.servlet.Servlet"/>
+        </service>
+        <property name="sling.servlet.paths" value="/bin/WikiContent"/>
+        <property name="sling.servlet.methods" value="POST"/>
+        <property name="service.pid" value="com.tcs.lotr.WikiContent"/>
+        <reference name="wikiService" interface="com.tcs.services.WikiService" cardinality="1..1" policy="static" bind="bindWikiService" unbind="unbindWikiService"/>
+    </scr:component>
+</components>
