@@ -268,3 +268,4 @@ $(document).ready(function(){
 	
 });
 
+console.log("Lotr-commons loaded");
