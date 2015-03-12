@@ -284,7 +284,7 @@ $(document).ready(function(){
 	   
    });
    
-   if($('#txtSearch')[0].value!=""){
+   if($('#txtSearch') && $('#txtSearch')[0] && $('#txtSearch')[0].value!=""){
 	   $("#searchForm").submit();
    }
 		
