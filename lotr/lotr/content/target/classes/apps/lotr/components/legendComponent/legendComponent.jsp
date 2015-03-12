@@ -20,7 +20,7 @@
 
 <div class="container">
     <cq:include path="header" resourceType="lotr/components/header" />
-	<div class="jumbotron img-circle header">
+	<div class="jumbotron img-circle">
 		<div>
 			<h2><%=currentPage.getTitle()%></h2>			
 		</div>
