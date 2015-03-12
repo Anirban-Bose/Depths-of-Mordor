@@ -11,8 +11,10 @@
 	// TODO add you code here
 %> 
 <div class="jumbotron bg-info img-rounded footer" style="background-color:#0099cc; color:whitesmoke;">
-    <div style="text-align:right">
+    <span style="text-align:left;">
+        The One Eye is Upon You Mortal
+    </span>
+    <span style="float:right;">
         &copy; LOTR 2015 | All Rights Reserved
-
-    </div>
+    </span>
 </div>

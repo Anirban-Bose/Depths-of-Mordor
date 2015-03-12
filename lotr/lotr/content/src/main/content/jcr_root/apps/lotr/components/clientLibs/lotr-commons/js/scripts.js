@@ -19,6 +19,9 @@ $(document).ready(function(){
 		$('html, body').animate({
 			scrollTop: $("#txtSearch").offset().top-50
 		}, 500);
+		
+		history.pushState(null,null,"?q="+$('#txtSearch')[0].value);	//Modifies the URL
+		
 		OFF=0;
 		$('#nxt').addClass("hide");
 		$('#prev').addClass("hide");
@@ -43,7 +46,9 @@ $(document).ready(function(){
 			    	$('#boundary').addClass("showBorder");
 			    	$('.resultListElem').html('');
 			    	var dataJSONArray = JSON.parse(data);     // Parses the data displayed on the browser page to a String
-			        var tot=dataJSONArray[0].total;
+			        var tot=0;
+			        if(dataJSONArray[0])
+			        	tot=dataJSONArray[0].total;
 			        if(LIMIT<1)
 			        	{
 			        	$('#nxt').addClass("hide");
@@ -75,7 +80,9 @@ $(document).ready(function(){
 			        				$('.resultListElem').html('');
 			        				var dataJSONArray = JSON.parse(data);
 			        				console.log(data+"----->"+dataJSONArray[0]);
-			        				var tot=dataJSONArray[0].total;
+			        				var tot=0;
+			    			        if(dataJSONArray[0])
+			    			        	tot=dataJSONArray[0].total;
 			        			
 			        				if(parseInt(OFF)>0)
 			        	        	{
@@ -125,18 +132,29 @@ $(document).ready(function(){
 		    		$('#nxt').addClass("hide");
 		    		}
 			        	}
-			    	for(var i=0;i<dataJSONArray.length;i++)
+			    		for(var i=0;i<dataJSONArray.length;i++)
 			    		{
 			    		
-			    	$('.resultListElem').append(
+			    			$('.resultListElem').append(
 			    		
 			    		
-			    			'<li style="font-family:Segoe UI;font-size:30px"><a href="'+dataJSONArray[i].path+'.html">'+" "+dataJSONArray[i].title+'</a></li>'//Uses the path and name parameters from the JSONObject
+			    			'<li style="font-family:Segoe UI;font-size:28px"><a href="'+dataJSONArray[i].path+'.html">'+" "+dataJSONArray[i].title+'</a></li>'//Uses the path and name parameters from the JSONObject
 			    			
 			    			);
 			    		}
+			    		if(dataJSONArray.length==0){
+			    			console.log("No results found "+$('.pageNo').length);
+			    			$('.resultStatus').html('No results found');
+			    			console.log("No results found message printed");
+			    		}
+			    		else{
+			    			$('.resultStatus').html("We found "+$('.pageNo').length+" page(s) of matching result(s) for <i>"+$('#txtSearch')[0].value+"</i>");
+			    		}
 			    });
 			}
+		
+		
+			
 		return false;
 	});
 		}
@@ -159,7 +177,9 @@ $(document).ready(function(){
 			$('.resultListElem').html('');
 			var dataJSONArray = JSON.parse(data);
 			console.log(data+"----->"+dataJSONArray[0]);
-			var tot=dataJSONArray[0].total;
+			var tot=0;
+	        if(dataJSONArray[0])
+	        	tot=dataJSONArray[0].total;
 		
 			if(parseInt(OFF)>0)
         	{
@@ -212,7 +232,9 @@ $(document).ready(function(){
 		  {			
 			$('.resultListElem').html('');
 			var dataJSONArray = JSON.parse(data);
-			var tot=dataJSONArray[0].total;
+			var tot=0;
+	        if(dataJSONArray[0])
+	        	tot=dataJSONArray[0].total;
 			if(parseInt(OFF)>0)
         	{
         	$('#prev').removeClass("hide");
@@ -230,15 +252,15 @@ $(document).ready(function(){
 		$('#nxt').addClass("hide");
 		}
 			for(var i=0;i<dataJSONArray.length;i++)
-    		{
-    		
-    	$('.resultListElem').append(
-    		
-    		
-    			'<li style="font-family:Segoe UI;font-size:30px"><a href="'+dataJSONArray[i].path+'.html">'+" "+dataJSONArray[i].title+'</a></li>'
-    			
-    			);
-    		}
+			{
+	    		
+	    	$('.resultListElem').append(
+	    		
+	    		
+	    			'<li style="font-family:Segoe UI;font-size:30px"><a href="'+dataJSONArray[i].path+'.html">'+" "+dataJSONArray[i].title+'</a></li>'
+	    			
+	    			);
+			}
 		  }
 		});
 		return false;
@@ -260,6 +282,10 @@ $(document).ready(function(){
 	  console.log(dataJSONArray1);
 	   
    });
+   
+   if($('#txtSearch')[0].value!=""){
+	   $("#searchForm").submit();
+   }
 		
 /*   pageController=function($scope) {
 	    $scope.characters=dataJSONArray1;
