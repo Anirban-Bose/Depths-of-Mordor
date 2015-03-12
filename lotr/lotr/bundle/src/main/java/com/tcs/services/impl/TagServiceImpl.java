@@ -1,4 +1,4 @@
-package com.tcs.queryBuilderDemo;
+package com.tcs.services.impl;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -22,10 +22,13 @@ import com.day.cq.search.Query;
 import com.day.cq.search.QueryBuilder;
 import com.day.cq.search.result.Hit;
 import com.day.cq.search.result.SearchResult;
+import com.tcs.queryBuilderDemo.SearchService;
+import com.tcs.queryBuilderDemo.SearchServiceImpl;
+import com.tcs.services.TagService;
 
 @Component
-@Service(value = SearchService.class)
-public class SearchServiceImpl implements SearchService {
+@Service(value = TagService.class)
+public class TagServiceImpl implements TagService {
 
 	@Reference
 	QueryBuilder queryBuilder;
@@ -33,36 +36,14 @@ public class SearchServiceImpl implements SearchService {
 	private static final Logger LOGGER = LoggerFactory
 			.getLogger(SearchServiceImpl.class);
 
-	public JSONArray getResults(String inputQuery, String limit, String offset,
-			String searchPath , Session session) {
+	
+	public JSONArray getAllTags(String tagGroup, Session session) {
 
 		JSONArray jsonArray = new JSONArray();
+
 		Map<String, String> map = new HashMap<String, String>();
-		map.put("type", "cq:Page");
-		map.put("p.offset", offset);
-		map.put("p.limit", limit);
-		map.put("path", searchPath);
-		
-		if (inputQuery.contains(":")) {
-
-			map.put("tagid", inputQuery);
-			map.put("tagid.property", "jcr:content/cq:tags");
+		map.put("path", "/etc/tags/"+tagGroup);
 	
-			
-		}
-
-		else {
-			map.put("fulltext", inputQuery);
-		}
-		Map<String, String> map1 = new HashMap<String, String>();
-		map1.put("type", "cq:Page");
-		map1.put("path", searchPath);
-		map1.put("fulltext", inputQuery);
-		map1.put("p.offset", "0");
-		map1.put("p.limit", "-1");
-		
-		LOGGER.info("Inside the getResults Method");
-
 		Query query = queryBuilder
 				.createQuery(PredicateGroup.create(map), session);
 		SearchResult result = query.getResult();
@@ -70,38 +51,25 @@ public class SearchServiceImpl implements SearchService {
 		Iterator<Hit> iterator = results.iterator();
 		LOGGER.info("The Result Size is " + results.size());
 		
-		Query query1 = queryBuilder
-				.createQuery(PredicateGroup.create(map1), session);
-		SearchResult result1 = query1.getResult();
-		List<Hit> results1 = result1.getHits();
-		Iterator<Hit> iterator1 = results1.iterator();
-		LOGGER.info("The Result Size is " + results1.size());
-		
-		
-
 		while (iterator.hasNext()) {
 
 			Hit singleHit = iterator.next();
 			JSONObject jsonObject = new JSONObject();
 			try {
 				jsonObject.put("title", singleHit.getTitle());
-				jsonObject.put("path", singleHit.getPath());
-				jsonObject.put("offset", offset);
-				jsonObject.put("limit", limit);
-				jsonObject.put("total", results1.size());
+				jsonObject.put("tagid", singleHit.getNode().getName());
 
-				jsonArray.put(jsonObject);
 			} catch (JSONException e) {
 				LOGGER.error("Error in JSON " + e.getMessage());
 			} catch (RepositoryException e) {
 				LOGGER.error("Error in Repository Access " + e.getMessage());
 			}
 			
+			jsonArray.put(jsonObject);
+
 		}
 		
-		LOGGER.info("Search JSON Array" + jsonArray.toString());
 		return jsonArray;
-
 	}
 
 }

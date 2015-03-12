@@ -2,3 +2,34 @@ body{
     background-image: url("../images/bg.jpg");
     background-size:cover;
 }
+.header{
+	background-image:url('../images/head.jpg');
+}
+.footer{
+	background-image:url('../images/foot.png');
+	font-family: Lucida Console;
+	font-size: larger;
+}
+li.tag{
+	display:inline-block;
+	font-family: 'Trebuchet MS';
+	font-size: 15px;
+	background-color: lightgrey;
+	color: white;
+	padding:5px;
+	margin-left:10px;
+	margin-left:10px;
+	border-radius:25px;
+	cursor: pointer;
+}
+
+li.tag:hover{
+	text-decoration: underline;
+	background-color: #06b0ce;
+}
+
+
+ul.tagCloud{
+	width:100%;
+	text-align: center;
+}

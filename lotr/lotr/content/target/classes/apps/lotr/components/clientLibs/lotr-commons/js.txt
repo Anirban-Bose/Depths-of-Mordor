@@ -1,3 +1,4 @@
 #base=js
 scripts.js
 wiki.js
+tags.js

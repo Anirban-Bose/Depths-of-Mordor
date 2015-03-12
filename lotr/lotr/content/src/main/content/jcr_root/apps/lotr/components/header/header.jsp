@@ -16,11 +16,11 @@
 <cq:includeClientLib categories="bootstrap"/>
 
 <cq:includeClientLib categories="lotr-commons"/>
-<div class="jumbotron img-rounded header" style=" background-color:#0099cc; color:whitesmoke;">
+<div class="jumbotron img-rounded header" style="color:whitesmoke;">
     <h2>
-        Lord of the Rings	
+      <!--   Lord of the Rings	 -->&nbsp;
     </h2>
     <i>
-        <%=currentPage.getTitle()%>
+    <%--     <%=currentPage.getTitle()%> --%>&nbsp;
     </i>
 </div>

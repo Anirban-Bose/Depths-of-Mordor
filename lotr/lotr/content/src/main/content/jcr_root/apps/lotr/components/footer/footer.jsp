@@ -10,9 +10,9 @@
 %><%
 	// TODO add you code here
 %> 
-<div class="jumbotron bg-info img-rounded footer" style="background-color:#0099cc; color:whitesmoke;">
+<div class="jumbotron bg-info img-rounded footer" style="/*background-color:#0099cc;*/ color:whitesmoke;">
     <span style="text-align:left;">
-        The One Eye is Upon You Mortal
+        One does not simply walk into Mordor
     </span>
     <span style="float:right;">
         &copy; LOTR 2015 | All Rights Reserved

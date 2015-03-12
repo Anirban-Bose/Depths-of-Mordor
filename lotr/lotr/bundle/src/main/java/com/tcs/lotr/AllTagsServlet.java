@@ -3,6 +3,7 @@ package com.tcs.lotr;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.jcr.Session;
 import javax.servlet.ServletException;
 
 import org.apache.felix.scr.annotations.Reference;
@@ -11,16 +12,16 @@ import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.servlets.SlingAllMethodsServlet;
 
-import com.tcs.services.WikiService;
+import com.tcs.services.TagService;
 
 
 
-@SlingServlet(paths = "/bin/WikiContent", methods = "POST", metatype = true)
+@SlingServlet(paths = "/bin/AllTags", methods = "POST", metatype = true)
 
-public class WikiContent extends SlingAllMethodsServlet {
+public class AllTagsServlet extends SlingAllMethodsServlet {
 	
 	@Reference
-	WikiService wikiService;
+	TagService tagService;
 	
 	
 	@Override
@@ -30,15 +31,14 @@ public class WikiContent extends SlingAllMethodsServlet {
 
 		PrintWriter out=response.getWriter();
 		
+		Session session = request.getResource().getResourceResolver().adaptTo(Session.class);
+		String tagGroup="";
 		
-		String query="";
+		if(request.getParameter("tagGroup")!=null)
+			tagGroup=request.getParameter("tagGroup");
 		
-		if(request.getParameter("query")!=null)
-			query=request.getParameter("query");
-		
-		out.println(wikiService.getContent(query));
-		
-		
+		out.println(tagService.getAllTags(tagGroup, session));
+	
 		out.close();
 		super.doPost(request, response);
 	}
