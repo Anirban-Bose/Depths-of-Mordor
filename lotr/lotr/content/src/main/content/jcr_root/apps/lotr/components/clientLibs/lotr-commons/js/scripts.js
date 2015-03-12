@@ -275,6 +275,7 @@ $(document).ready(function(){
 			    console.log(dataJSONArray1);
 				});
 		
+		
 	});
 		
    $('#txtSearch').blur(function(){

@@ -9,7 +9,7 @@
 
 		<center>
 			<input type="search" id="txtSearch"			
-				class="form-control" style="width: 70%"> <!-- ng-model="word" ng-controller="pageController" -->
+				class="form-control" style="width: 70%" placeholder="Enter the name of a character, species, or a place in Middle Earth..." value="<%=(request.getParameter("q")!=null)?request.getParameter("q"):""%>"> <!-- ng-model="word" ng-controller="pageController" -->
 			
 			&nbsp;
 			<button type="submit" id="btnSearch" class="btn btn-info">
