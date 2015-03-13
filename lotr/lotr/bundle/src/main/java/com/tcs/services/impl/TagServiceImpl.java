@@ -43,6 +43,7 @@ public class TagServiceImpl implements TagService {
 
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("path", "/etc/tags/"+tagGroup);
+		map.put("p.limit", "-1");
 	
 		Query query = queryBuilder
 				.createQuery(PredicateGroup.create(map), session);
@@ -57,7 +58,7 @@ public class TagServiceImpl implements TagService {
 			JSONObject jsonObject = new JSONObject();
 			try {
 				jsonObject.put("title", singleHit.getTitle());
-				jsonObject.put("tagid", singleHit.getNode().getName());
+				jsonObject.put("tagid", singleHit.getNode().getPath().replace("/etc/tags/"+tagGroup+"/", ""));
 
 			} catch (JSONException e) {
 				LOGGER.error("Error in JSON " + e.getMessage());
