@@ -18,5 +18,7 @@ $(document).ready(
 					$('#searchForm').submit();
 				});
 			});
-
+	$("#txtSearch").prop('disabled', true);
+    $('ul.tagCloud').fadeOut();
+    $('.hm').html('You shall not pass.....');
 		});

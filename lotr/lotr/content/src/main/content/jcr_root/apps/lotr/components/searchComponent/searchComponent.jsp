@@ -5,8 +5,11 @@
 <div class="jumbotron">              <!-- ng-app="" -->
 
 	<form class="form-group form-inline text-center" id="searchForm" action="#txtSearch" autocomplete="on">
-
-
+		<center><span class="hm" style="font-size: 15px; font-family: Segoe UI;"></span></center>
+		<br/>
+		<span style="height:40px;"> <input type="checkbox"  id="check" class="check" style="width:40px"/></span>&nbsp;
+      <br/>
+ &nbsp;<br/>
 		<center>
 			<input type="search" id="txtSearch"			
 				class="form-control" style="width: 70%" placeholder="Enter the name of a character, species, or a place in Middle Earth..." value="<%=(request.getParameter("q")!=null)?request.getParameter("q"):""%>"> <!-- ng-model="word" ng-controller="pageController" -->

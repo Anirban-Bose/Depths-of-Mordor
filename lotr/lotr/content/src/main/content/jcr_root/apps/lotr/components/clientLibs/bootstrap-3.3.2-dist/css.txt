@@ -5,3 +5,5 @@ bootstrap-theme.min.css
 bootstrap.css
 bootstrap.css.map
 bootstrap.min.css
+bootstrap-switch.css
+bootstrap-switch.min.css

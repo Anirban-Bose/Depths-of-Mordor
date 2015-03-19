@@ -15,6 +15,11 @@
 </title>
 <cq:includeClientLib categories="bootstrap"/>
 
+<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.0/css/bootstrap-toggle.min.css" rel="stylesheet">
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.0/js/bootstrap-toggle.min.js"></script>
+
+
+
 <cq:includeClientLib categories="lotr-commons"/>
 <div class="jumbotron img-rounded header" style="color:whitesmoke;">
     <h2>
