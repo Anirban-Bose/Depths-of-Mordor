@@ -113,6 +113,7 @@ $(document).ready(function(){
 			        	    		}
 			        			  }
 			        			});
+                                return false;
 			        		});
 			       	        	
 			        if(parseInt(OFF)>0)
@@ -148,7 +149,7 @@ $(document).ready(function(){
 			    			console.log("No results found message printed");
 			    		}
 			    		else{
-			    			$('.resultStatus').html("We found "+$('.pageNo').length+" page(s) of matching result(s) for <i>"+$('#txtSearch')[0].value+"</i>");
+			    			$('.resultStatus').html("We found "+$('.pageNo').length/$('.pagination').length+" page(s) of matching result(s) for <i>"+$('#txtSearch')[0].value+"</i>");
 			    		}
 			    });
 			}
