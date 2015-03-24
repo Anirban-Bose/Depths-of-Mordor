@@ -13,10 +13,8 @@
 <title>
 	LOTR | <%=currentPage.getTitle()%>
 </title>
-<cq:includeClientLib categories="bootstrap"/>
+<cq:includeClientLib categories="lotrAll"/>
 
-
-<cq:includeClientLib categories="lotr-commons"/>
 <div class="jumbotron img-rounded header" style="color:whitesmoke;">
     <h2>
       <!--   Lord of the Rings	 -->&nbsp;

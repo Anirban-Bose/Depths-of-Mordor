@@ -15,10 +15,8 @@
  display:none;
  }
 </style>
-
-
 <div class="">
-	<div class="content">&nbsp;</div>
+	<div class="content"></div>
 	<center>
 		<ul id="pg" class="pagination">
 		</ul>

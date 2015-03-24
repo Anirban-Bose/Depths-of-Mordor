@@ -15,8 +15,13 @@ import org.apache.sling.api.servlets.SlingAllMethodsServlet;
 import com.tcs.services.TagService;
 
 
-
-@SlingServlet(paths = "/bin/AllTags", methods = "POST", metatype = true)
+@SlingServlet(
+		paths = "/bin/AllTags",
+		methods = { "POST", "GET" },
+		metatype = true,
+		label = "AllTagsServlet",
+		name = "com.tcs.lotr.AllTagsServlet"
+		)
 
 public class AllTagsServlet extends SlingAllMethodsServlet {
 	
@@ -30,7 +35,6 @@ public class AllTagsServlet extends SlingAllMethodsServlet {
 			IOException {
 
 		PrintWriter out=response.getWriter();
-		
 		Session session = request.getResource().getResourceResolver().adaptTo(Session.class);
 		String tagGroup="";
 		
@@ -48,7 +52,7 @@ public class AllTagsServlet extends SlingAllMethodsServlet {
 			SlingHttpServletResponse response) throws ServletException,
 			IOException {
 		doPost(request, response);
-		super.doGet(request, response);
+		//super.doGet(request, response);
 	}
 
 }

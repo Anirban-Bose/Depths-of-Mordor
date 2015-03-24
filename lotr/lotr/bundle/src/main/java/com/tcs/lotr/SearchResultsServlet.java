@@ -62,6 +62,10 @@ public class SearchResultsServlet extends SlingAllMethodsServlet {
 		} catch (Exception e) {
 			LOGGER.error("Exception in Search Servlet");
 		}
+		finally{
+			if(out!=null)
+				out.close();
+		}
 	}
 
 	@Override

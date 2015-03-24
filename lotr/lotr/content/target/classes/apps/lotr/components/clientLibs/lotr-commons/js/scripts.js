@@ -103,13 +103,19 @@ $(document).ready(function(){
 			        		  
 			        				for(var i=0;i<dataJSONArray.length;i++)
 			        	    		{
-			        	    		
-			        	    	$('.resultListElem').append(
-			        	    		
-			        	    		
-			        	    			'<li style="font-family:Segoe UI;font-size:30px";><a href="'+dataJSONArray[i].path+'.html">'+" "+dataJSONArray[i].title+'</a></li>'
-			        	    			
-			        	    			);
+			        	    		$('.resultListElem').append(
+			        			    		
+			        			    		
+					    					'<li style="font-family:Segoe UI;font-size:25px";><a href="'
+											+ dataJSONArray[i].path
+											+ '.html">'
+											+ " "
+											+ dataJSONArray[i].title
+											+ '</a><span class="linkMeta"><br/>'
+											+ dataJSONArray[i].path
+											+'</span><br/><br/></li>'		//Uses the path and name parameters from the JSONObject
+					    			
+					    			);
 			        	    		}
 			        			  }
 			        			});
@@ -139,7 +145,14 @@ $(document).ready(function(){
 			    			$('.resultListElem').append(
 			    		
 			    		
-			    			'<li style="font-family:Segoe UI;font-size:28px"><a href="'+dataJSONArray[i].path+'.html">'+" "+dataJSONArray[i].title+'</a></li>'//Uses the path and name parameters from the JSONObject
+			    					'<li style="font-family:Segoe UI;font-size:25px";><a href="'
+									+ dataJSONArray[i].path
+									+ '.html">'
+									+ " "
+									+ dataJSONArray[i].title
+									+ '</a><span class="linkMeta"><br/>'
+									+ dataJSONArray[i].path
+									+'</span><br/><br/></li>'		//Uses the path and name parameters from the JSONObject
 			    			
 			    			);
 			    		}
@@ -202,10 +215,17 @@ $(document).ready(function(){
 			for(var i=0;i<dataJSONArray.length;i++)
     		{
     		
-    	$('.resultListElem').append(
-    		
-    		
-    			'<li style="font-family:Segoe UI;font-size:30px"><a href="'+dataJSONArray[i].path+'.html">'+" "+dataJSONArray[i].title+'</a></li>'
+				$('.resultListElem').append(
+			    		
+			    		
+    					'<li style="font-family:Segoe UI;font-size:25px";><a href="'
+						+ dataJSONArray[i].path
+						+ '.html">'
+						+ " "
+						+ dataJSONArray[i].title
+						+ '</a><span class="linkMeta"><br/>'
+						+ dataJSONArray[i].path
+						+'</span><br/><br/></li>'		//Uses the path and name parameters from the JSONObject
     			
     			);
     		}
@@ -255,12 +275,19 @@ $(document).ready(function(){
 			for(var i=0;i<dataJSONArray.length;i++)
 			{
 	    		
-	    	$('.resultListElem').append(
-	    		
-	    		
-	    			'<li style="font-family:Segoe UI;font-size:30px"><a href="'+dataJSONArray[i].path+'.html">'+" "+dataJSONArray[i].title+'</a></li>'
-	    			
-	    			);
+				$('.resultListElem').append(
+			    		
+			    		
+    					'<li style="font-family:Segoe UI;font-size:25px";><a href="'
+						+ dataJSONArray[i].path
+						+ '.html">'
+						+ " "
+						+ dataJSONArray[i].title
+						+ '</a><span class="linkMeta"><br/>'
+						+ dataJSONArray[i].path
+						+'</span><br/><br/></li>'		//Uses the path and name parameters from the JSONObject
+    			
+    			);
 			}
 		  }
 		});
@@ -310,19 +337,18 @@ $(document).ready(function(){
    }
    $(".check").bootstrapSwitch();	
 
-
+   
 	$('.bootstrap-switch, .bootstrap-switch *').click(function(){
         if ($('#check').prop('checked'))
 		{    
-	        $('.hm').hide();
+        	$('.hm').css("visibility","hidden");
 	    	$("#txtSearch").removeAttr('disabled');
 	    	$('ul.tagCloud').fadeIn();
 		}
 		else{
 			$("#txtSearch").prop('disabled', true);
 			$('ul.tagCloud').fadeOut();
-			$('.hm').show();
-			
+        	$('.hm').css("visibility","visible");			
 		}
 	});	
         
