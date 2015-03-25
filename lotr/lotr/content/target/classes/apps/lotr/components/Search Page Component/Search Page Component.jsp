@@ -9,11 +9,13 @@
 <%@page session="false" %><%
 %><%
 	// TODO add you code here
-%><head>
+%>
+<head>
 	<cq:include script="/libs/wcm/core/components/init/init.jsp"/>
 </head>
 
-<div class="container"  > <!-- ng-app="" ng-controller="pageController" -->
+<cq:include path="loadingComponent" resourceType="lotr/components/loadingComponent"/>
+<div class="container" style="display:none;" > <!-- ng-app="" ng-controller="pageController" -->
 
     <cq:include path="header" resourceType="lotr/components/header"/>
     <div class="jumbotron">

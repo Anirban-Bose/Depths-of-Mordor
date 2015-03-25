@@ -29,7 +29,7 @@ public class WikiServiceImpl implements WikiService {
 	public String getContent(String query) {
 
 		if(query.equals(""))
-			query="India";
+			query="Lord%20of%20the%20Rings";
 		
 		String jsonString="",outputString="";
 		

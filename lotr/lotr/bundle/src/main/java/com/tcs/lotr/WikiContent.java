@@ -35,12 +35,15 @@ public class WikiContent extends SlingAllMethodsServlet {
 		
 		if(request.getParameter("query")!=null)
 			query=request.getParameter("query");
-		
-		out.println(wikiService.getContent(query));
+		try{
+			out.println(wikiService.getContent(query));
+		}
+		catch(Exception e){
+			out.println("Content could not be fetched from Wikipedia because of network issue.");
+		}
 		
 		
 		out.close();
-		super.doPost(request, response);
 	}
 	
 	@Override
@@ -48,7 +51,6 @@ public class WikiContent extends SlingAllMethodsServlet {
 			SlingHttpServletResponse response) throws ServletException,
 			IOException {
 		doPost(request, response);
-		super.doGet(request, response);
 	}
 
 }

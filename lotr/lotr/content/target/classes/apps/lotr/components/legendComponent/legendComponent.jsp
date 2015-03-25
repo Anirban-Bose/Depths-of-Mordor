@@ -8,7 +8,6 @@
 <%@include file="/libs/foundation/global.jsp"%>
 <head>
 	<cq:include script="/libs/wcm/core/components/init/init.jsp"/>
-
 </head>
 
 
@@ -18,7 +17,9 @@
 	// TODO add you code here
 %>
 
-<div class="container">
+<cq:include path="loadingComponent" resourceType="lotr/components/loadingComponent"/>
+
+<div class="container" style="display:none;" >
     <cq:include path="header" resourceType="lotr/components/header" />
 	<div class="jumbotron img-circle">
 		<div>

@@ -44,7 +44,6 @@ public class AllTagsServlet extends SlingAllMethodsServlet {
 		out.println(tagService.getAllTags(tagGroup, session));
 	
 		out.close();
-		super.doPost(request, response);
 	}
 	
 	@Override
@@ -52,7 +51,8 @@ public class AllTagsServlet extends SlingAllMethodsServlet {
 			SlingHttpServletResponse response) throws ServletException,
 			IOException {
 		doPost(request, response);
-		//super.doGet(request, response);
 	}
+	
+	
 
 }

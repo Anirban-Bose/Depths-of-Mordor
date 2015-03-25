@@ -1,6 +1,11 @@
 console.log("Lotr-commons requested");
 
 $(document).ready(function(){
+
+	$('.searchFormReloadMsg').hide();
+	$('#searchForm').show();
+	
+	
 	var dataJSONArray1;
 	var PATH="/content/lord-of-the-rings/en/";
 	if($('.path').length)
@@ -162,7 +167,10 @@ $(document).ready(function(){
 			    			console.log("No results found message printed");
 			    		}
 			    		else{
-			    			$('.resultStatus').html("We found "+$('.pageNo').length/$('.pagination').length+" page(s) of matching result(s) for <i>"+$('#txtSearch')[0].value+"</i>");
+			    			if($('#txtSearch')[0].value)
+			    				$('.resultStatus').html("We found "+$('.pageNo').length/$('.pagination').length+" page(s) of matching result(s) for <i>"+$('#txtSearch')[0].value+"</i>");
+			    			else
+			    				$('.resultStatus').html("A total of "+$('.pageNo').length/$('.pagination').length+" page(s) of result(s) are found");
 			    		}
 			    });
 			}

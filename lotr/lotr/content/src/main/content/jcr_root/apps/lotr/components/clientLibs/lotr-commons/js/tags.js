@@ -20,5 +20,5 @@ $(document).ready(
 			});
 	$("#txtSearch").prop('disabled', true);
     $('ul.tagCloud').fadeOut();
-    $('.hm').html('You shall not pass.....');
+    $('.hm').html('&nbsp;Search bar is disabled. Use the switch to enable it.&nbsp;');
 		});

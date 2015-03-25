@@ -6,11 +6,13 @@
 
 <div class="jumbotron">
 	<!-- ng-app="" -->
-
+	<span class="bg-primary searchFormReloadMsg" style="text-align:center;">
+		Please reload the page for changes to reflect	
+	</span>
 	<form class="form-group form-inline text-center" id="searchForm"
-		action="#txtSearch" autocomplete="on">
+		action="#txtSearch" autocomplete="on" style="display:none;">
 		<center>
-			<span class="hm" style="font-size: 15px; font-family: Segoe UI;"></span>
+			<span class="hm bg-primary" style="font-size: 15px; font-family: Segoe UI;"></span>
 		</center>
 		<br /> &nbsp; <br /> &nbsp;<br />
 		<center>
