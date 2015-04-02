@@ -22,7 +22,7 @@ import com.tcs.queryBuilderDemo.SearchService;
 
 /*
  * The url from the jquery is compared with the paths parameter of the sling
- * servlet annotation.Since it matches,the search parameter(g) obatined is sent
+ * servlet annotation.Since it matches,the search parameter(g) obtained is sent
  * to post method
  */
 public class SearchResultsServlet extends SlingAllMethodsServlet {

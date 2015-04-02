@@ -117,7 +117,7 @@ $(document).ready(function(){
 											+ " "
 											+ dataJSONArray[i].title
 											+ '</a><span class="linkMeta"><br/>'
-											+ dataJSONArray[i].path
+											+ dataJSONArray[i].excerpts
 											+'</span><br/><br/></li>'		//Uses the path and name parameters from the JSONObject
 					    			
 					    			);
@@ -148,15 +148,15 @@ $(document).ready(function(){
 			    		{
 			    		
 			    			$('.resultListElem').append(
-			    		
-			    		
+	        			    		
+	        			    		
 			    					'<li style="font-family:Segoe UI;font-size:25px";><a href="'
 									+ dataJSONArray[i].path
 									+ '.html">'
 									+ " "
 									+ dataJSONArray[i].title
 									+ '</a><span class="linkMeta"><br/>'
-									+ dataJSONArray[i].path
+									+ dataJSONArray[i].excerpts
 									+'</span><br/><br/></li>'		//Uses the path and name parameters from the JSONObject
 			    			
 			    			);
@@ -232,7 +232,7 @@ $(document).ready(function(){
 						+ " "
 						+ dataJSONArray[i].title
 						+ '</a><span class="linkMeta"><br/>'
-						+ dataJSONArray[i].path
+						+ dataJSONArray[i].excerpts
 						+'</span><br/><br/></li>'		//Uses the path and name parameters from the JSONObject
     			
     			);
@@ -292,7 +292,7 @@ $(document).ready(function(){
 						+ " "
 						+ dataJSONArray[i].title
 						+ '</a><span class="linkMeta"><br/>'
-						+ dataJSONArray[i].path
+						+ dataJSONArray[i].excerpts
 						+'</span><br/><br/></li>'		//Uses the path and name parameters from the JSONObject
     			
     			);

@@ -7,6 +7,8 @@ import java.util.Map;
 
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
+import javax.jcr.Value;
+
 
 import org.apache.felix.scr.annotations.Component;
 import org.apache.felix.scr.annotations.Reference;
@@ -44,22 +46,18 @@ public class SearchServiceImpl implements SearchService {
 		map.put("path", searchPath);
 		
 		if (inputQuery.contains(":")) {
-
 			map.put("tagid", inputQuery);
-			map.put("tagid.property", "jcr:content/cq:tags");
-	
-			
+			map.put("tagid.property", "jcr:content/cq:tags");			
 		}
-
 		else {
 			map.put("fulltext", inputQuery);
+			/*
+			map.put("property", "jcr:content/legendContent/text"); 
+			map.put("property.operation", "like");
+			map.put("property.value", "%"+inputQuery+"%");	// Needs %25 if testing through querybuilder.json URL parameters method
+			*/
 		}
-		Map<String, String> map1 = new HashMap<String, String>();
-		map1.put("type", "cq:Page");
-		map1.put("path", searchPath);
-		map1.put("fulltext", inputQuery);
-		map1.put("p.offset", "0");
-		map1.put("p.limit", "-1");
+		
 		
 		LOGGER.info("Inside the getResults Method");
 
@@ -70,25 +68,40 @@ public class SearchServiceImpl implements SearchService {
 		Iterator<Hit> iterator = results.iterator();
 		LOGGER.info("The Result Size is " + results.size());
 		
-		Query query1 = queryBuilder
-				.createQuery(PredicateGroup.create(map1), session);
-		SearchResult result1 = query1.getResult();
-		List<Hit> results1 = result1.getHits();
-		Iterator<Hit> iterator1 = results1.iterator();
-		LOGGER.info("The Result Size is " + results1.size());
-		
-		
+				
+		/*
+		QueryManager qm;
+		String x="";
+		try {
+			qm = session.getWorkspace().getQueryManager();
+			javax.jcr.query.Query eq = qm.createQuery("//*[jcr:contains(., '"+inputQuery+"')]/(@Title|rep:excerpt(.))", javax.jcr.query.Query.SQL);
+			QueryResult eresult = eq.execute();
+			for (RowIterator it = eresult.getRows(); it.hasNext(); ) {
+			    Row r = it.nextRow();
+			    Value excerpt = r.getValue("rep:excerpt(.)");
+			    x=x+"--"+excerpt.toString()+" *** ";
+			}
+		} catch (RepositoryException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}	
+		*/
 
 		while (iterator.hasNext()) {
 
 			Hit singleHit = iterator.next();
 			JSONObject jsonObject = new JSONObject();
 			try {
+				String excerpt=singleHit.getExcerpt();
+				if(excerpt.equals(""))
+					excerpt="-Empty content-";
+				
 				jsonObject.put("title", singleHit.getTitle());
 				jsonObject.put("path", singleHit.getPath());
+				jsonObject.put("excerpts", excerpt);
 				jsonObject.put("offset", offset);
 				jsonObject.put("limit", limit);
-				jsonObject.put("total", results1.size());
+				jsonObject.put("total", result.getTotalMatches());
 
 				jsonArray.put(jsonObject);
 			} catch (JSONException e) {
