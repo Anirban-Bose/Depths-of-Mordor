@@ -15,8 +15,8 @@
                         jcr:primaryType="cq:Widget"
                         fieldLabel="Enter search path"
                         name="./SearchField"
-                        rootPath="/content/lord-of-the-rings"
-                        xtype="textfield"/>
+                        rootPath="/content"
+                        xtype="pathfield"/>
                     <Offset
                         jcr:primaryType="cq:Widget"
                         fieldLabel="Enter Offset"

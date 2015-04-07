@@ -2,7 +2,7 @@
 
 <span class="offset" style="display: none;"><%=properties.get("Offset") %></span>
 <span class="limit" style="display: none;"><%=properties.get("Limit") %></span>
-<span class="path" style="display: none;"><%=(properties.get("SearchPath")==null || properties.get("SearchPath").equals(""))? "/content/lord-of-the-rings/en/middle-earth/" :properties.get("SearchPath") %></span>
+<span class="path" style="display: none;"><%=(properties.get("SearchField")==null || properties.get("SearchField").equals(""))? "/content/lord-of-the-rings/en/middle-earth/" :properties.get("SearchField") %></span>
 
 <div class="jumbotron">
 	<!-- ng-app="" -->
