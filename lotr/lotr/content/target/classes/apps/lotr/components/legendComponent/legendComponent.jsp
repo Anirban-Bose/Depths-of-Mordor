@@ -52,6 +52,10 @@
 						%>
 			<%=properties.get("newLegendData") %>	 --%>		
 		</div>
+        <hr/>
+        <div class="jumbotron">
+    	<cq:include path="parsys" resourceType="wcm/foundation/components/parsys"/>
+    </div>
 		<hr/>
 		<div>
 			<cq:include path="wiki" resourceType="lotr/components/wikiComponent"/>

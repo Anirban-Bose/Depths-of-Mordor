@@ -10,6 +10,7 @@ $(document).ready(function(){
 	var PATH="/content/lord-of-the-rings/en/";
 	if($('.path').length)
 		PATH=$('.path').html();
+	console.log("Path to be searched: "+PATH);
 	var OFF= 0 ;
 	if($('.offset').length)
 		OFF=$('.offset').html();
